@@ -1,0 +1,32 @@
+<tool id="list-terms-xlsx" name="Génération d’un fichier Excel des mots-clés" version="0.5.1">
+  <description>à partir d’un fichier “doc × terme” brut</description>
+  <requirements>
+    <container type="docker">visatm/clean-doc-term</container>
+  </requirements>
+  <command><![CDATA[
+    listeTermes.pl -i "$input" -e "$xlsx" -f "$min" -u "$max"
+  ]]></command>
+  <inputs>
+    <param name="input" type="data" format="tabular" label="Fichier “doc × terme” brut" />
+    <param name="min" type="integer" value="2" min="0" label="Fréquence minimum" />
+    <param name="max" type="float" value="100.0" min="0.0" max="100.0" label="Fréquence maximum (en %)" />
+  </inputs>
+  <outputs>
+    <data format="xlsx" label="Liste de descripteurs de ${on_string}" name="xlsx" />
+  </outputs>
+
+  <tests>
+    <test>
+      <param name="input" value="ndocDocsMots.txt" />
+      <param name="min" value="2" />
+      <param name="max" value="10.1" />
+      <output name="xlsx" file="ndoc.xlsx" />
+    </test>
+  </tests>
+
+  <help><![CDATA[
+A venir ...
+
+ ]]></help>
+
+</tool>

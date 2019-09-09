@@ -1,0 +1,30 @@
+<tool id="limit-terms" name="Nettoyage d’un fichier “doc × terme” brut" version="0.5.1">
+  <description>à partir d’un fichier Excel de mots-clés validés</description>
+  <requirements>
+    <container type="docker">visatm/clean-doc-term</container>
+  </requirements>
+  <command><![CDATA[
+    limiteTermes.pl -i "$input" -e "$xlsx" -o "$output"
+  ]]></command>
+  <inputs>
+    <param name="input" type="data" format="tabular" label="Fichier “doc × terme” brut" />
+    <param name="xlsx"  type="data" format="xlsx" label="Fichier Excel validé" />
+  </inputs>
+  <outputs>
+    <data  name="output" format="tabular" label="Fichier “doc × terme” propre de ${on_string}" />
+  </outputs>
+
+  <tests>
+    <!-- test>
+      <param name="input" value="istexCorpus.txt" />
+      <param name="teeft" value="no" />
+      <output name="metadata" file="istexMetadata.txt" />
+    </test -->
+  </tests>
+
+  <help><![CDATA[
+A venir ...
+
+ ]]></help>
+
+</tool>
